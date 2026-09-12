@@ -288,8 +288,13 @@ const commercialTerms = [
   ["পারফরম্যান্স গ্যারান্টি", "প্রথম বছরে ন্যূনতম ২.৬০ লাখ ইউনিট"],
 ];
 
+const subtotal = boqItems.reduce((s, i) => s + i.total, 0);
+const contingency = Math.round(subtotal * 0.05);
+const grandTotal = subtotal + contingency;
+
 const fmt = (n: number) => n.toLocaleString("en-IN");
 const lakh = (n: number) => (n / 100000).toFixed(2);
+
 
 
 /* ---------------- পেজ ---------------- */
