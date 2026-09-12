@@ -91,7 +91,7 @@ function QuotationPage() {
                   className="brand-logo h-auto w-48 sm:w-64"
                 />
                 <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-red">
-                  <Sun className="h-4 w-4" /> সম্ভাব্য মূল্য প্রাক্কলন / কোটেশন
+                  <Sun className="h-4 w-4" /> প্রাথমিক কোটেশন
                 </p>
                 <h1 className="font-display mt-2 border-l-4 border-brand-red pl-4 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
                   ১৮০ কিলোওয়াট অন-গ্রিড
