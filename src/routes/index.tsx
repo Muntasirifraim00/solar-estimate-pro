@@ -8,6 +8,10 @@ import {
   AlertCircle,
   Wallet,
   ClipboardList,
+  FileText,
+  BatteryCharging,
+  Layers,
+  Cpu,
 } from "lucide-react";
 import sunclickLogoAsset from "@/assets/sunclick-logo.png.asset.json";
 
@@ -34,6 +38,36 @@ export const Route = createFileRoute("/")({
 });
 
 /* ---------------- ডেটা ---------------- */
+
+const boqItems = [
+  { sl: 1, item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp", qty: "২৯৬ পিস", spec: "৬২০ Wp" },
+  { sl: 2, item: "অন-গ্রিড থ্রি-ফেজ সোলার ইনভার্টার", qty: "৩ পিস", spec: "৬০ kW × ৩ = ১৮০ kW" },
+  { sl: 3, item: "মাউন্টিং স্ট্রাকচার — হট-ডিপ গ্যালভানাইজড / অ্যালুমিনিয়াম রেইল", qty: "১৮৩.৫ kWp", spec: "প্রতি Wp হিসেবে" },
+  { sl: 4, item: "সোলার DC ক্যাবল — ৬ মিমি² (১৫০০V, TUV সার্টিফাইড)", qty: "৫,০০০ মিটার", spec: "৬ mm²" },
+  { sl: 5, item: "AC ক্যাবল — ৪-কোর ৫০ মিমি² (ইনভার্টার → মেইন প্যানেল)", qty: "১৫০ মিটার", spec: "৫০ mm² Cu" },
+  { sl: 6, item: "DC কম্বাইনার বক্স (DCDB) — SPD Type-II + ফিউজ + আইসোলেটর", qty: "৬ সেট", spec: "১৬ ইনপুট" },
+  { sl: 7, item: "AC ডিস্ট্রিবিউশন বক্স (ACDB) — ২৫০A MCCB, SPD, চেঞ্জওভার", qty: "১ সেট", spec: "২৫০ A" },
+  { sl: 8, item: "আর্থিং কিট — কেমিক্যাল ইলেক্ট্রোড + কপার তার", qty: "৬ সেট", spec: "প্যানেল/ইনভার্টার/লাইটনিং" },
+  { sl: 9, item: "লাইটনিং অ্যারেস্টার (ESE টাইপ) + ডাউন কন্ডাক্টর", qty: "২ সেট", spec: "ESE" },
+  { sl: 10, item: "ক্যাবল ট্রে, পাইপ, MC4 কানেক্টর, লাগস ও অন্যান্য ফিটিংস", qty: "১ লট", spec: "সম্পূর্ণ সাইট" },
+  { sl: 11, item: "নেট-মিটারিং সেটআপ — মিটার বক্স, CT ও আবেদন সংক্রান্ত কাজ", qty: "১ সেট", spec: "বিদ্যুৎ সংস্থা অনুযায়ী" },
+  { sl: 12, item: "ইনস্টলেশন, কমিশনিং ও টেস্টিং (শ্রমিক)", qty: "১ চুক্তি", spec: "টার্নকি" },
+  { sl: 13, item: "ডিজাইন, ডকুমেন্টেশন ও ইউটিলিটি লিয়েজন", qty: "১ চুক্তি", spec: "—" },
+];
+
+const panelOptions = [
+  { capacity: "৫৭৫–৬২৫ Wp", type: "N-TOPCon মনো বাইফেসিয়াল (দুই পাশে উৎপাদন)", eff: "২২–২৩%", brands: "Longi, Jinko, Trina, Canadian Solar, Astronergy", note: "আমাদের প্রস্তাবিত — এই কোটেশনে ধরা হয়েছে" },
+  { capacity: "৫৪৫–৫৮৫ Wp", type: "মনো PERC (এক পাশে উৎপাদন)", eff: "২১–২২%", brands: "JA Solar, Trina, Jinko, Risen, Canadian Solar", note: "ব্যবহারিক বিকল্প, উৎপাদন সামান্য কম" },
+  { capacity: "৫৮০–৬১৫ Wp", type: "HJT বাইফেসিয়াল (নতুন প্রযুক্তি)", eff: "২২.৫–২৩.৫%", brands: "Huasun, Risen", note: "উচ্চ দক্ষতার বিকল্প" },
+  { capacity: "৩৩০–৪০০ Wp", type: "পলি ক্রিস্টালাইন (পুরোনো প্রযুক্তি)", eff: "১৬.৫–১৮%", brands: "Waaree, Loom Solar, Vikram Solar", note: "সুপারিশ করা হয় না — বেশি জায়গা লাগে" },
+];
+
+const inverterOptions = [
+  { cap: "৬০ kW", use: "৩ ইউনিটে ১৮০ kW (এই কোটেশনে ধরা হয়েছে)", brands: "Huawei, Growatt, Solis, Sungrow, GoodWe, Deye", note: "প্রস্তাবিত — মনিটরিং ভালো, সার্ভিস সহজ" },
+  { cap: "১০০–১১০ kW", use: "২ ইউনিটে ২০০–২২০ kW", brands: "Huawei, Sungrow, Growatt, Solis", note: "কম ইউনিট — ইনস্টল ও মেইনটেন্যান্স সহজ" },
+  { cap: "১৫–২৫ kW", use: "৮–১২ ইউনিটে ১৮০–২৪০ kW", brands: "Growatt, Solis, Deye, GoodWe", note: "ছাদ কয়েক ভাগে ভাগ থাকলে উপযোগী" },
+  { cap: "৫০ kW হাইব্রিড", use: "৪ ইউনিটে ২০০ kW", brands: "Deye, Growatt, Solis", note: "পরে ব্যাটারি ব্যাকআপ যোগ করতে চাইলে" },
+];
 
 const scopeIncluded = [
   "সাইট সার্ভে, স্ট্রাকচারাল ও ইলেকট্রিক্যাল ডিজাইন",
@@ -166,6 +200,110 @@ function QuotationPage() {
                   ["ধরন", "অন-গ্রিড (নেট-মিটারিং)"],
                 ].map(([k, v]) => (
                    <div key={k} className="rounded-lg border border-brand-red/15 border-t-2 border-t-brand-red bg-card p-4">
+                    <dt className="text-xs text-muted-foreground">{k}</dt>
+                    <dd className="mt-1 font-bold">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+            {/* প্যানেল অপশন */}
+            <section aria-labelledby="panels" className="print-break">
+              <h2 id="panels" className="font-display flex items-center gap-2 text-xl font-bold text-foreground">
+                <Layers className="h-5 w-5 text-brand-red" />
+                সোলার প্যানেলের ধরন ও বিকল্প
+              </h2>
+              <p className="mt-3 text-sm text-ink-soft">
+                এখানে কোনো নির্দিষ্ট ব্র্যান্ড চূড়ান্ত করা হয়নি। প্রতিটি ধরনের প্যানেলের ক্ষমতা,
+                প্রযুক্তি, দক্ষতা ও যেসব ব্র্যান্ডে পাওয়া যায় তা তুলনা করা হলো।
+              </p>
+              <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
+                <table className="w-full min-w-[620px] text-sm">
+                  <thead><tr className="bg-brand-red text-left text-primary-foreground">
+                    <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
+                    <th className="px-3 py-2.5 font-semibold">ধরন / টেকনোলজি</th>
+                    <th className="px-3 py-2.5 font-semibold">দক্ষতা</th>
+                    <th className="px-3 py-2.5 font-semibold">পাওয়া যায় যেসব ব্র্যান্ডে</th>
+                    <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
+                  </tr></thead>
+                  <tbody>{panelOptions.map((p) => (
+                    <tr key={p.capacity} className="border-t even:bg-brand-red-soft/45">
+                      <td className="whitespace-nowrap px-3 py-2.5 font-medium">{p.capacity}</td>
+                      <td className="px-3 py-2.5 text-ink-soft">{p.type}</td>
+                      <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{p.eff}</td>
+                      <td className="px-3 py-2.5">{p.brands}</td>
+                      <td className="px-3 py-2.5 text-ink-soft">{p.note}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* ইনভার্টার অপশন */}
+            <section aria-labelledby="inverters" className="print-break">
+              <h2 id="inverters" className="font-display flex items-center gap-2 text-xl font-bold text-foreground">
+                <Cpu className="h-5 w-5 text-brand-red" />
+                ইনভার্টারের সব বিকল্প
+              </h2>
+              <p className="mt-3 text-sm text-ink-soft">
+                ১৮০ kW সিস্টেমে ৩ × ৬০ kW ধরা হয়েছে। নির্দিষ্ট কোনো মডেল চূড়ান্ত নয়—
+                ক্ষমতা, ব্যবহার ও পাওয়া যায় এমন ব্র্যান্ডগুলো নিচে তুলনা করা হলো।
+              </p>
+              <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
+                <table className="w-full min-w-[620px] text-sm">
+                  <thead><tr className="bg-brand-red text-left text-primary-foreground">
+                    <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
+                    <th className="px-3 py-2.5 font-semibold">কনফিগারেশন / ব্যবহার</th>
+                    <th className="px-3 py-2.5 font-semibold">পাওয়া যায় যেসব ব্র্যান্ডে</th>
+                    <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
+                  </tr></thead>
+                  <tbody>{inverterOptions.map((v) => (
+                    <tr key={v.cap} className="border-t even:bg-brand-red-soft/45">
+                      <td className="whitespace-nowrap px-3 py-2.5 font-medium">{v.cap}</td>
+                      <td className="px-3 py-2.5 text-ink-soft">{v.use}</td>
+                      <td className="px-3 py-2.5">{v.brands}</td>
+                      <td className="px-3 py-2.5 text-ink-soft">{v.note}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* পণ্যের তালিকা */}
+            <section aria-labelledby="boq" className="print-boq">
+              <h2 id="boq" className="font-display flex items-center gap-2 text-xl font-bold text-foreground">
+                <FileText className="h-5 w-5 text-brand-red" />
+                পণ্যের তালিকা (BOQ)
+              </h2>
+              <div className="boq-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
+                <table className="w-full min-w-[560px] text-sm">
+                  <thead><tr className="bg-brand-red text-left text-primary-foreground">
+                    <th className="px-3 py-2.5 font-semibold">#</th>
+                    <th className="px-3 py-2.5 font-semibold">পণ্য / বিবরণ</th>
+                    <th className="px-3 py-2.5 font-semibold">পরিমাণ</th>
+                    <th className="px-3 py-2.5 font-semibold">ক্ষমতা / স্পেসিফিকেশন</th>
+                  </tr></thead>
+                  <tbody>{boqItems.map((item) => (
+                    <tr key={item.sl} className="border-t even:bg-brand-red-soft/45">
+                      <td className="px-3 py-2.5 text-muted-foreground">{item.sl}</td>
+                      <td className="px-3 py-2.5">{item.item}</td>
+                      <td className="whitespace-nowrap px-3 py-2.5">{item.qty}</td>
+                      <td className="px-3 py-2.5 text-muted-foreground">{item.spec}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* উৎপাদন */}
+            <section aria-labelledby="production" className="print-keep">
+              <h2 id="production" className="font-display flex items-center gap-2 text-xl font-bold text-foreground">
+                <BatteryCharging className="h-5 w-5 text-brand-red" />
+                সম্ভাব্য বিদ্যুৎ উৎপাদন
+              </h2>
+              <dl className="mt-4 grid grid-cols-2 gap-3">
+                {[["মাসিক উৎপাদন", "≈ ২৩,০০০ ইউনিট"], ["বার্ষিক উৎপাদন", "≈ ২.৭৬ লাখ ইউনিট"]].map(([k, v]) => (
+                  <div key={k} className="rounded-lg border border-brand-red/15 border-t-2 border-t-brand-red bg-card p-4">
                     <dt className="text-xs text-muted-foreground">{k}</dt>
                     <dd className="mt-1 font-bold">{v}</dd>
                   </div>
