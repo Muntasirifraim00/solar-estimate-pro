@@ -671,7 +671,7 @@ function QuotationPage() {
 
 
             {/* শর্তাবলী */}
-            <section aria-labelledby="terms" className="print-keep rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
+            <section aria-labelledby="terms" className="print-keep print-new-page rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
               <h2
                 id="terms"
                 className="font-display flex items-center gap-2 text-base font-bold"
