@@ -5,15 +5,9 @@ import {
   Ruler,
   Printer,
   CheckCircle2,
-  FileText,
-  BatteryCharging,
-  TrendingUp,
   AlertCircle,
-  Layers,
-  Cpu,
   Wallet,
   ClipboardList,
-
 } from "lucide-react";
 import sunclickLogoAsset from "@/assets/sunclick-logo.png.asset.json";
 
