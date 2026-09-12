@@ -167,9 +167,10 @@ function QuotationPage() {
           </button>
         </div>
 
-        <article className="print-page overflow-hidden rounded-2xl border bg-card shadow-xl">
+        <article className="print-page overflow-hidden rounded-xl border border-brand-red/20 bg-card shadow-xl">
           {/* হেডার */}
-          <header className="quotation-header border-b px-6 py-6 sm:px-10">
+          <header className="quotation-header relative border-b border-brand-red/20 bg-brand-red-soft px-6 py-6 sm:px-10">
+            <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-brand-red" />
             <div className="flex items-start justify-between gap-4">
               <div>
                 <img
@@ -180,7 +181,7 @@ function QuotationPage() {
                 <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-red">
                   <Sun className="h-4 w-4" /> সম্ভাব্য মূল্য প্রাক্কলন / কোটেশন
                 </p>
-                <h1 className="font-display mt-2 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+                <h1 className="font-display mt-2 border-l-4 border-brand-red pl-4 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
                   ১৮০ কিলোওয়াট অন-গ্রিড
                   <br />
                   সোলার পাওয়ার সিস্টেম
@@ -204,22 +205,22 @@ function QuotationPage() {
                 id="feasibility"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
               >
-                <Ruler className="h-5 w-5 text-solar-gold" />
+                 <Ruler className="h-5 w-5 text-brand-red" />
                 আপনার ছাদে কি ১৮০ kW সম্ভব?
               </h2>
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-xl border bg-solar-gold-soft p-4">
+                <div className="rounded-lg border border-brand-red/20 bg-brand-red-soft p-4">
                   <p className="text-sm text-ink-soft">ছাদের মোট জায়গা</p>
                   <p className="mt-1 text-2xl font-bold">১৬,০০০ বর্গফুট</p>
                 </div>
-                <div className="rounded-xl border bg-solar-gold-soft p-4">
+                <div className="rounded-lg border border-brand-red/20 bg-brand-red-soft p-4">
                   <p className="text-sm text-ink-soft">
                     ১৮০ kW-এর জন্য প্রয়োজন (সারি-ফাঁকাসহ)
                   </p>
                   <p className="mt-1 text-2xl font-bold">≈ ৯,০০০ বর্গফুট</p>
                 </div>
-                <div className="rounded-xl border bg-leaf/10 p-4">
-                  <p className="flex items-center gap-1.5 text-sm font-semibold text-leaf">
+                <div className="rounded-lg border border-brand-red/20 bg-card p-4 shadow-sm">
+                  <p className="flex items-center gap-1.5 text-sm font-semibold text-brand-red">
                     <CheckCircle2 className="h-4 w-4" /> হ্যাঁ, আরামে করা যাবে
                   </p>
                   <p className="mt-1 text-sm text-ink-soft">
@@ -242,7 +243,7 @@ function QuotationPage() {
                 id="summary"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
               >
-                <Zap className="h-5 w-5 text-solar-gold" />
+                 <Zap className="h-5 w-5 text-brand-red" />
                 সিস্টেমের এক নজরে
               </h2>
               <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -252,7 +253,7 @@ function QuotationPage() {
                   ["ইনভার্টার", "৩ পিস × ৬০ kW"],
                   ["ধরন", "অন-গ্রিড (নেট-মিটারিং)"],
                 ].map(([k, v]) => (
-                  <div key={k} className="rounded-xl border p-4">
+                   <div key={k} className="rounded-lg border border-brand-red/15 border-t-2 border-t-brand-red bg-card p-4">
                     <dt className="text-xs text-muted-foreground">{k}</dt>
                     <dd className="mt-1 font-bold">{v}</dd>
                   </div>
@@ -266,13 +267,13 @@ function QuotationPage() {
                 id="boq"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
               >
-                <FileText className="h-5 w-5 text-solar-gold" />
+                 <FileText className="h-5 w-5 text-brand-red" />
                 পণ্যের তালিকা ও সম্ভাব্য মূল্য (BOQ)
               </h2>
-              <div className="boq-table-wrap mt-4 overflow-x-auto rounded-xl border">
+              <div className="boq-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
                 <table className="w-full min-w-[640px] text-sm">
                   <thead>
-                    <tr className="bg-secondary text-left">
+                    <tr className="bg-brand-red text-left text-primary-foreground">
                       <th className="px-3 py-2.5 font-semibold">#</th>
                       <th className="px-3 py-2.5 font-semibold">
                         পণ্য / বিবরণ
@@ -289,7 +290,7 @@ function QuotationPage() {
                   </thead>
                   <tbody>
                     {boqItems.map((i) => (
-                      <tr key={i.sl} className="border-t">
+                      <tr key={i.sl} className="border-t even:bg-brand-red-soft/45">
                         <td className="px-3 py-2.5 text-muted-foreground">
                           {i.sl}
                         </td>
@@ -313,7 +314,7 @@ function QuotationPage() {
               </div>
 
               {/* মোট খরচ */}
-              <div className="print-keep mt-4 rounded-xl border-2 border-solar-gold bg-solar-gold-soft p-5">
+              <div className="print-keep mt-4 rounded-lg border-2 border-brand-red bg-brand-red-soft p-5">
                 <div className="space-y-1.5 text-sm">
                   <div className="flex justify-between">
                     <span className="text-ink-soft">সাব-টোটাল</span>
@@ -333,7 +334,7 @@ function QuotationPage() {
                     <span className="font-display text-lg font-bold">
                       সর্বমোট (আনুমানিক)
                     </span>
-                    <span className="font-display text-2xl font-bold text-leaf tabular-nums">
+                    <span className="font-display text-2xl font-bold text-brand-red tabular-nums">
                       ৳ {fmt(grandTotal)}
                     </span>
                   </div>
@@ -351,7 +352,7 @@ function QuotationPage() {
                 id="roi"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
               >
-                <TrendingUp className="h-5 w-5 text-solar-gold" />
+                 <TrendingUp className="h-5 w-5 text-brand-red" />
                 কত বিদ্যুৎ পাবেন, কত টাকা সাশ্রয়?
               </h2>
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -361,8 +362,8 @@ function QuotationPage() {
                   { icon: TrendingUp, k: "বছরে সাশ্রয়", v: "≈ ৩০ লাখ ৳ (৳১১/ইউনিট ধরে)" },
                   { icon: CheckCircle2, k: "টাকা উঠতে সময়", v: "≈ ৩.৫ বছর" },
                 ].map(({ icon: Icon, k, v }) => (
-                  <div key={k} className="rounded-xl border p-4">
-                    <Icon className="h-5 w-5 text-solar-gold" />
+                   <div key={k} className="rounded-lg border border-brand-red/15 border-t-2 border-t-brand-red bg-card p-4">
+                     <Icon className="h-5 w-5 text-brand-red" />
                     <p className="mt-2 text-xs text-muted-foreground">{k}</p>
                     <p className="mt-0.5 font-bold">{v}</p>
                   </div>
@@ -371,12 +372,12 @@ function QuotationPage() {
             </section>
 
             {/* শর্তাবলী */}
-            <section aria-labelledby="terms" className="print-keep rounded-xl bg-secondary/60 p-5 text-sm">
+            <section aria-labelledby="terms" className="print-keep rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
               <h2
                 id="terms"
                 className="font-display flex items-center gap-2 text-base font-bold"
               >
-                <AlertCircle className="h-4 w-4 text-solar-gold" />
+                 <AlertCircle className="h-4 w-4 text-brand-red" />
                 জেনে রাখুন
               </h2>
               <ul className="mt-3 list-disc space-y-1.5 pl-5 text-ink-soft">
