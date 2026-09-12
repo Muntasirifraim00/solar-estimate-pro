@@ -613,6 +613,63 @@ function QuotationPage() {
               </div>
             </section>
 
+            {/* কাজের পরিধি */}
+            <section aria-labelledby="scope" className="print-keep">
+              <h2
+                id="scope"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <ClipboardList className="h-5 w-5 text-brand-red" />
+                কাজের পরিধি — কী অন্তর্ভুক্ত, কী নয়
+              </h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-lg border border-brand-red/20 bg-card p-4">
+                  <p className="flex items-center gap-1.5 text-sm font-bold text-brand-red">
+                    <CheckCircle2 className="h-4 w-4" /> অন্তর্ভুক্ত
+                  </p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-ink-soft">
+                    {scopeIncluded.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-lg border border-brand-red/20 bg-brand-red-soft p-4">
+                  <p className="flex items-center gap-1.5 text-sm font-bold text-brand-red">
+                    <AlertCircle className="h-4 w-4" /> অন্তর্ভুক্ত নয়
+                  </p>
+                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-ink-soft">
+                    {scopeExcluded.map((s) => (
+                      <li key={s}>{s}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* বাণিজ্যিক শর্ত */}
+            <section aria-labelledby="commercial" className="print-keep">
+              <h2
+                id="commercial"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <Wallet className="h-5 w-5 text-brand-red" />
+                পেমেন্ট, সময়সীমা ও ওয়ারেন্টি
+              </h2>
+              <dl className="mt-4 grid gap-3 sm:grid-cols-2">
+                {commercialTerms.map(([k, v]) => (
+                  <div
+                    key={k}
+                    className="rounded-lg border border-brand-red/15 border-l-4 border-l-brand-red bg-card p-4"
+                  >
+                    <dt className="text-xs font-semibold text-brand-red">{k}</dt>
+                    <dd className="mt-1 text-sm text-ink-soft">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+
+
             {/* শর্তাবলী */}
             <section aria-labelledby="terms" className="print-keep rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
               <h2
