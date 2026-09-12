@@ -268,12 +268,14 @@
     page-break-inside: avoid;
   }
 
-  .print-boq {
+  .print-boq,
+  .print-break {
     break-before: page;
     page-break-before: always;
   }
 
-  .boq-table-wrap {
+  .boq-table-wrap,
+  .opt-table-wrap {
     overflow: visible !important;
     border: 0 !important;
   }
@@ -306,12 +308,17 @@
     overflow-wrap: anywhere;
   }
 
-  th:nth-child(1) { width: 5%; }
-  th:nth-child(2) { width: 35%; }
-  th:nth-child(3) { width: 12%; }
-  th:nth-child(4) { width: 20%; }
-  th:nth-child(5) { width: 13%; }
-  th:nth-child(6) { width: 15%; }
+  .boq-table-wrap th:nth-child(1) { width: 5%; }
+  .boq-table-wrap th:nth-child(2) { width: 35%; }
+  .boq-table-wrap th:nth-child(3) { width: 12%; }
+  .boq-table-wrap th:nth-child(4) { width: 20%; }
+  .boq-table-wrap th:nth-child(5) { width: 13%; }
+  .boq-table-wrap th:nth-child(6) { width: 15%; }
+
+  .opt-table-wrap table {
+    font-size: 8.5pt;
+  }
+
 
   td {
     white-space: normal !important;
