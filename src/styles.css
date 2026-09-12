@@ -67,6 +67,8 @@
   --font-display: "Noto Serif Bengali", "Hind Siliguri", serif;
   --solar-gold: oklch(0.75 0.16 78);
   --solar-gold-soft: oklch(0.95 0.045 90);
+  --brand-red: oklch(0.55 0.23 28);
+  --brand-red-soft: oklch(0.97 0.025 25);
   --leaf: oklch(0.42 0.1 155);
   --ink-soft: oklch(0.42 0.03 250);
   --background: oklch(0.985 0.008 95);
@@ -159,22 +161,143 @@
   --color-solar-gold-soft: var(--solar-gold-soft);
   --color-leaf: var(--leaf);
   --color-ink-soft: var(--ink-soft);
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-soft: var(--brand-red-soft);
 }
 
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   .no-print {
     display: none !important;
   }
+
   body {
-    background: #fff;
+    background: white;
+    font-size: 9.5pt;
   }
+
+  body > div,
+  body > div > div {
+    min-height: 0 !important;
+  }
+
+  .print-page,
+  .print-page > main,
+  .print-page > header,
+  .print-page > footer {
+    width: auto !important;
+    max-width: none !important;
+  }
+
   .print-page {
     box-shadow: none !important;
     margin: 0 !important;
     border-radius: 0 !important;
+    border: 0 !important;
+    overflow: visible !important;
   }
-  section,
+
+  .quotation-header {
+    padding: 5mm 6mm !important;
+    break-inside: avoid-page;
+  }
+
+  .brand-logo {
+    width: 55mm !important;
+  }
+
+  .print-page main {
+    padding: 6mm !important;
+  }
+
+  .print-page main > section {
+    margin-bottom: 6mm;
+  }
+
+  .print-page main > section + section {
+    margin-top: 6mm !important;
+  }
+
+  .print-keep,
+  .print-page h2,
+  .print-page dl,
+  .print-page ul {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .print-boq {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .boq-table-wrap {
+    overflow: visible !important;
+    border: 0 !important;
+  }
+
   table {
-    break-inside: avoid;
+    min-width: 0 !important;
+    table-layout: fixed;
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tbody {
+    display: table-row-group;
+  }
+
+  tr,
+  th,
+  td {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  th,
+  td {
+    padding: 1.6mm 1.8mm !important;
+    border: 0.2mm solid var(--border);
+    overflow-wrap: anywhere;
+  }
+
+  th:nth-child(1) { width: 5%; }
+  th:nth-child(2) { width: 35%; }
+  th:nth-child(3) { width: 12%; }
+  th:nth-child(4) { width: 20%; }
+  th:nth-child(5) { width: 13%; }
+  th:nth-child(6) { width: 15%; }
+
+  td {
+    white-space: normal !important;
+  }
+
+  footer {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 }

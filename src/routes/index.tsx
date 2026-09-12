@@ -10,6 +10,7 @@ import {
   TrendingUp,
   AlertCircle,
 } from "lucide-react";
+import sunclickLogoAsset from "@/assets/sunclick-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -166,26 +167,31 @@ function QuotationPage() {
           </button>
         </div>
 
-        <div className="print-page overflow-hidden rounded-2xl border bg-card shadow-xl">
+        <article className="print-page overflow-hidden rounded-2xl border bg-card shadow-xl">
           {/* হেডার */}
-          <header className="border-b bg-primary px-6 py-8 text-primary-foreground sm:px-10">
+          <header className="quotation-header border-b px-6 py-6 sm:px-10">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="flex items-center gap-2 text-sm font-medium text-solar-gold">
+                <img
+                  src={sunclickLogoAsset.url}
+                  alt="SUNCLICK Global Limited"
+                  className="brand-logo h-auto w-48 sm:w-64"
+                />
+                <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-brand-red">
                   <Sun className="h-4 w-4" /> সম্ভাব্য মূল্য প্রাক্কলন / কোটেশন
                 </p>
-                <h1 className="font-display mt-2 text-3xl font-bold leading-tight sm:text-4xl">
+                <h1 className="font-display mt-2 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
                   ১৮০ কিলোওয়াট অন-গ্রিড
                   <br />
                   সোলার পাওয়ার সিস্টেম
                 </h1>
-                <p className="mt-3 max-w-xl text-sm text-primary-foreground/80">
+                <p className="mt-3 max-w-xl text-sm text-ink-soft">
                   ছাদের আয়তন: ১৬,০০০ বর্গফুট • নেট-মিটারিং ভিত্তিক থ্রি-ফেজ
                   অন-গ্রিড সিস্টেম • বাংলাদেশের বাজারে উপলভ্য পণ্য
                 </p>
               </div>
-              <div className="hidden shrink-0 rounded-xl border border-primary-foreground/20 p-4 text-center sm:block">
-                <p className="text-xs text-primary-foreground/70">তারিখ</p>
+              <div className="hidden shrink-0 rounded-xl border border-brand-red/20 bg-brand-red-soft p-4 text-center sm:block">
+                <p className="text-xs text-ink-soft">তারিখ</p>
                 <p className="font-semibold">সেপ্টেম্বর ২০২৬</p>
               </div>
             </div>
@@ -193,7 +199,7 @@ function QuotationPage() {
 
           <main className="space-y-8 px-6 py-8 sm:px-10">
             {/* ছাদ সম্ভাব্যতা */}
-            <section aria-labelledby="feasibility">
+            <section aria-labelledby="feasibility" className="print-keep">
               <h2
                 id="feasibility"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
@@ -231,7 +237,7 @@ function QuotationPage() {
             </section>
 
             {/* সিস্টেম সামারি */}
-            <section aria-labelledby="summary">
+            <section aria-labelledby="summary" className="print-keep">
               <h2
                 id="summary"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
@@ -255,7 +261,7 @@ function QuotationPage() {
             </section>
 
             {/* BOQ টেবিল */}
-            <section aria-labelledby="boq">
+            <section aria-labelledby="boq" className="print-boq">
               <h2
                 id="boq"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
@@ -263,7 +269,7 @@ function QuotationPage() {
                 <FileText className="h-5 w-5 text-solar-gold" />
                 পণ্যের তালিকা ও সম্ভাব্য মূল্য (BOQ)
               </h2>
-              <div className="mt-4 overflow-x-auto rounded-xl border">
+              <div className="boq-table-wrap mt-4 overflow-x-auto rounded-xl border">
                 <table className="w-full min-w-[640px] text-sm">
                   <thead>
                     <tr className="bg-secondary text-left">
@@ -307,7 +313,7 @@ function QuotationPage() {
               </div>
 
               {/* মোট খরচ */}
-              <div className="mt-4 rounded-xl border-2 border-solar-gold bg-solar-gold-soft p-5">
+              <div className="print-keep mt-4 rounded-xl border-2 border-solar-gold bg-solar-gold-soft p-5">
                 <div className="space-y-1.5 text-sm">
                   <div className="flex justify-between">
                     <span className="text-ink-soft">সাব-টোটাল</span>
@@ -340,7 +346,7 @@ function QuotationPage() {
             </section>
 
             {/* উৎপাদন ও সাশ্রয় */}
-            <section aria-labelledby="roi">
+            <section aria-labelledby="roi" className="print-keep">
               <h2
                 id="roi"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
@@ -365,7 +371,7 @@ function QuotationPage() {
             </section>
 
             {/* শর্তাবলী */}
-            <section aria-labelledby="terms" className="rounded-xl bg-secondary/60 p-5 text-sm">
+            <section aria-labelledby="terms" className="print-keep rounded-xl bg-secondary/60 p-5 text-sm">
               <h2
                 id="terms"
                 className="font-display flex items-center gap-2 text-base font-bold"
@@ -394,11 +400,15 @@ function QuotationPage() {
             </section>
           </main>
 
-          <footer className="border-t bg-secondary/40 px-6 py-4 text-center text-xs text-muted-foreground sm:px-10">
-            এই কোটেশনটি ১৮০ kW অন-গ্রিড সোলার প্রকল্পের পরিকল্পনার উদ্দেশ্যে
-            তৈরি — চূড়ান্ত প্রস্তাবের জন্য সাইট পরিদর্শন প্রয়োজন।
+          <footer className="print-keep border-t border-brand-red/20 bg-brand-red-soft px-6 py-5 text-center text-xs text-ink-soft sm:px-10">
+            <p className="font-bold text-brand-red">SUNCLICK GLOBAL LIMITED</p>
+            <p className="mt-1">www.sunclickgloballimited.com</p>
+            <p className="mt-2">
+              এই কোটেশনটি ১৮০ kW অন-গ্রিড সোলার প্রকল্পের পরিকল্পনার উদ্দেশ্যে
+              তৈরি — চূড়ান্ত প্রস্তাবের জন্য সাইট পরিদর্শন প্রয়োজন।
+            </p>
           </footer>
-        </div>
+        </article>
       </div>
     </div>
   );
