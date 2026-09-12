@@ -63,7 +63,13 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --font-sans: "Hind Siliguri", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Noto Serif Bengali", "Hind Siliguri", serif;
+  --solar-gold: oklch(0.75 0.16 78);
+  --solar-gold-soft: oklch(0.95 0.045 90);
+  --leaf: oklch(0.42 0.1 155);
+  --ink-soft: oklch(0.42 0.03 250);
+  --background: oklch(0.985 0.008 95);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
