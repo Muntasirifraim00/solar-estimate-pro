@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
 const boqItems = [
   {
     sl: 1,
-    item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp (Longi / Jinko / Trina / Canadian Solar)",
+    item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp",
     qty: "২৯৬ পিস",
     spec: "৬২০ Wp",
     unit: 16500,
@@ -52,7 +52,7 @@ const boqItems = [
   },
   {
     sl: 2,
-    item: "অন-গ্রিড থ্রি-ফেজ ইনভার্টার — 60 kW (Growatt / Solis / Huawei SUN2000)",
+    item: "অন-গ্রিড থ্রি-ফেজ সোলার ইনভার্টার — 60 kW",
     qty: "৩ পিস",
     spec: "৬০ kW × ৩ = ১৮০ kW",
     unit: 480000,
