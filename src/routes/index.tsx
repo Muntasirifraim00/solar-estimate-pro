@@ -150,6 +150,70 @@ const boqItems = [
 
 const panelOptions = [
   {
+    capacity: "৫৭৫–৬২৫ Wp",
+    type: "N-TOPCon মনো বাইফেসিয়াল (দুই পাশে উৎপাদন)",
+    eff: "২২–২৩%",
+    price: "৳ ১৫,৫০০ – ১৭,০০০",
+    brands: "Longi, Jinko, Trina, Canadian Solar, Astronergy",
+    note: "আমাদের প্রস্তাবিত — এই কোটেশনে ধরা হয়েছে",
+  },
+  {
+    capacity: "৫৪৫–৫৮৫ Wp",
+    type: "মনো PERC (এক পাশে উৎপাদন)",
+    eff: "২১–২২%",
+    price: "৳ ১৩,৫০০ – ১৫,৫০০",
+    brands: "JA Solar, Trina, Jinko, Risen, Canadian Solar",
+    note: "খরচ-সাশ্রয়ী, উৎপাদন সামান্য কম",
+  },
+  {
+    capacity: "৫৮০–৬১৫ Wp",
+    type: "HJT বাইফেসিয়াল (নতুন প্রযুক্তি)",
+    eff: "২২.৫–২৩.৫%",
+    price: "৳ ১৮,০০০ – ২০,৫০০",
+    brands: "Huasun, Risen",
+    note: "সর্বোচ্চ দক্ষতা, দাম বেশি",
+  },
+  {
+    capacity: "৩৩০–৪০০ Wp",
+    type: "পলি ক্রিস্টালাইন (পুরোনো প্রযুক্তি)",
+    eff: "১৬.৫–১৮%",
+    price: "৳ ৮,৫০০ – ১০,৫০০",
+    brands: "Waaree, Loom Solar, Vikram Solar",
+    note: "সুপারিশ করি না — বেশি জায়গা লাগে",
+  },
+];
+
+const inverterOptions = [
+  {
+    cap: "৬০ kW",
+    use: "৩ ইউনিটে ১৮০ kW (এই কোটেশনে ধরা হয়েছে)",
+    price: "৳ ৪,৫০,০০০ – ৫,৫০,০০০",
+    brands: "Huawei, Growatt, Solis, Sungrow, GoodWe, Deye",
+    note: "আমাদের প্রস্তাবিত — মনিটরিং ভালো, সার্ভিস সহজ",
+  },
+  {
+    cap: "১০০–১১০ kW",
+    use: "২ ইউনিটে ২০০–২২০ kW",
+    price: "৳ ৮,০০,০০০ – ৯,৫০,০০০",
+    brands: "Huawei, Sungrow, Growatt, Solis",
+    note: "কম ইউনিট — ইনস্টল ও মেইনটেন্যান্স সহজ",
+  },
+  {
+    cap: "১৫–২৫ kW",
+    use: "৮–১২ ইউনিটে ১৮০–২৪০ kW",
+    price: "৳ ১,৪০,০০০ – ১,৯০,০০০",
+    brands: "Growatt, Solis, Deye, GoodWe",
+    note: "ছাদ কয়েক ভাগে ভাগ থাকলে উপযোগী",
+  },
+  {
+    cap: "৫০ kW হাইব্রিড",
+    use: "৪ ইউনিটে ২০০ kW",
+    price: "৳ ৬,৮০,০০০ – ৮,০০,০০০",
+    brands: "Deye, Growatt, Solis",
+    note: "পরে ব্যাটারি ব্যাকআপ যোগ করতে চাইলে",
+  },
+];
+  {
     brand: "Longi Hi-MO 7 (N-TOPCon)",
     type: "মনো, বাইফেসিয়াল, গ্লাস-গ্লাস",
     wp: "৫৮০–৬২০ Wp",
