@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
 const boqItems = [
   {
     sl: 1,
-    item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp (Longi / Jinko / Trina / Canadian Solar)",
+    item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp",
     qty: "২৯৬ পিস",
     spec: "৬২০ Wp",
     unit: 16500,
@@ -52,7 +52,7 @@ const boqItems = [
   },
   {
     sl: 2,
-    item: "অন-গ্রিড থ্রি-ফেজ ইনভার্টার — 60 kW (Growatt / Solis / Huawei SUN2000)",
+    item: "অন-গ্রিড থ্রি-ফেজ সোলার ইনভার্টার — 60 kW",
     qty: "৩ পিস",
     spec: "৬০ kW × ৩ = ১৮০ kW",
     unit: 480000,
@@ -213,124 +213,6 @@ const inverterOptions = [
     note: "পরে ব্যাটারি ব্যাকআপ যোগ করতে চাইলে",
   },
 ];
-  {
-    brand: "Longi Hi-MO 7 (N-TOPCon)",
-    type: "মনো, বাইফেসিয়াল, গ্লাস-গ্লাস",
-    wp: "৫৮০–৬২০ Wp",
-    eff: "২২.৫%",
-    warranty: "১২ + ৩০ বছর",
-    price: "৳ ১৬,৫০০",
-    note: "আমাদের প্রস্তাবিত (এই কোটেশনে ধরা)",
-  },
-  {
-    brand: "Jinko Tiger Neo (N-TOPCon)",
-    type: "মনো, বাইফেসিয়াল",
-    wp: "৫৭৫–৬২৫ Wp",
-    eff: "২২.৩%",
-    warranty: "১২ + ৩০ বছর",
-    price: "৳ ১৬,২০০",
-    note: "সমমানের বিকল্প",
-  },
-  {
-    brand: "Trina Vertex N",
-    type: "মনো, বাইফেসিয়াল",
-    wp: "৫৮৫–৬২০ Wp",
-    eff: "২২.৪%",
-    warranty: "১২ + ৩০ বছর",
-    price: "৳ ১৬,৪০০",
-    note: "সমমানের বিকল্প",
-  },
-  {
-    brand: "Canadian Solar TOPHiKu6",
-    type: "মনো, বাইফেসিয়াল",
-    wp: "৫৭০–৬১০ Wp",
-    eff: "২২.০%",
-    warranty: "১২ + ৩০ বছর",
-    price: "৳ ১৫,৯০০",
-    note: "খরচ-সাশ্রয়ী",
-  },
-  {
-    brand: "JA Solar DeepBlue 4.0",
-    type: "মনো PERC / TOPCon",
-    wp: "৫৪৫–৬১৫ Wp",
-    eff: "২১.৩%",
-    warranty: "১২ + ২৫ বছর",
-    price: "৳ ১৫,৪০০",
-    note: "বাজেট অপশন, উৎপাদন সামান্য কম",
-  },
-  {
-    brand: "Polycrystalline (পুরোনো প্রযুক্তি)",
-    type: "পলি, মনোফেসিয়াল",
-    wp: "৩৩০–৪০০ Wp",
-    eff: "১৭.৫%",
-    warranty: "১০ + ২৫ বছর",
-    price: "৳ ৯,৫০০",
-    note: "সুপারিশ করি না — বেশি জায়গা লাগে",
-  },
-];
-
-const inverterOptions = [
-  {
-    brand: "Huawei SUN2000-60KTL",
-    cap: "৬০ kW",
-    phase: "থ্রি-ফেজ",
-    mppt: "৬ MPPT",
-    eff: "৯৮.৮%",
-    warranty: "৫ (বাড়ানো যায় ১০)",
-    price: "৳ ৫,৪০,০০০",
-    note: "সেরা মনিটরিং ও AFCI সুরক্ষা",
-  },
-  {
-    brand: "Growatt MAC 60KTL3-X",
-    cap: "৬০ kW",
-    phase: "থ্রি-ফেজ",
-    mppt: "৬ MPPT",
-    eff: "৯৮.৬%",
-    warranty: "৫ বছর",
-    price: "৳ ৪,৮০,০০০",
-    note: "প্রস্তাবিত (এই কোটেশনে ধরা)",
-  },
-  {
-    brand: "Solis S5-GC60K",
-    cap: "৬০ kW",
-    phase: "থ্রি-ফেজ",
-    mppt: "৪ MPPT",
-    eff: "৯৮.৭%",
-    warranty: "৫ বছর",
-    price: "৳ ৪,৬৫,০০০",
-    note: "সাশ্রয়ী, নির্ভরযোগ্য",
-  },
-  {
-    brand: "Sungrow SG110CX",
-    cap: "১১০ kW",
-    phase: "থ্রি-ফেজ",
-    mppt: "৯ MPPT",
-    eff: "৯৮.৭%",
-    warranty: "৫ বছর",
-    price: "৳ ৮,৬০,০০০",
-    note: "২ ইউনিটে ২২০ kW — কম ইউনিট, সহজ মেইনটেন্যান্স",
-  },
-  {
-    brand: "Growatt MOD 15KTL3-X",
-    cap: "১৫ kW",
-    phase: "থ্রি-ফেজ",
-    mppt: "২ MPPT",
-    eff: "৯৮.৪%",
-    warranty: "৫ বছর",
-    price: "৳ ১,৪৫,০০০",
-    note: "ছাদ কয়েক ভাগে ভাগ থাকলে (১২ ইউনিট)",
-  },
-  {
-    brand: "Deye SUN-50K-SG01HP3 (হাইব্রিড)",
-    cap: "৫০ kW",
-    phase: "থ্রি-ফেজ হাইব্রিড",
-    mppt: "৪ MPPT",
-    eff: "৯৭.৬%",
-    warranty: "৫ বছর",
-    price: "৳ ৭,২০,০০০",
-    note: "পরে ব্যাটারি যোগ করতে চাইলে",
-  },
-];
 
 const scopeIncluded = [
   "সাইট সার্ভে, স্ট্রাকচারাল ও ইলেকট্রিক্যাল ডিজাইন",
@@ -487,31 +369,31 @@ function QuotationPage() {
                 সোলার প্যানেলের ধরন ও বিকল্প
               </h2>
               <p className="mt-3 text-sm text-ink-soft">
-                নিচের যেকোনো প্যানেল দিয়েই সিস্টেমটি করা যাবে। ব্র্যান্ড বদলালে
-                শুধু প্যানেলের দাম ও মোট খরচ সেই অনুযায়ী পরিবর্তিত হবে।
+                এখানে কোনো নির্দিষ্ট ব্র্যান্ড চূড়ান্ত করা হয়নি — প্রতিটি ধরনের
+                প্যানেলের জন্য ক্ষমতা, সম্ভাব্য দামের সীমা এবং কোন কোন ব্র্যান্ড
+                থেকে পাওয়া যায় তা দেওয়া হলো। চূড়ান্ত ব্র্যান্ড আপনার পছন্দ ও
+                বাজারমূল্য অনুযায়ী সরবরাহের সময় ঠিক করা হবে।
               </p>
               <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
                 <table className="w-full min-w-[680px] text-sm">
                   <thead>
                     <tr className="bg-brand-red text-left text-primary-foreground">
-                      <th className="px-3 py-2.5 font-semibold">ব্র্যান্ড / মডেল</th>
-                      <th className="px-3 py-2.5 font-semibold">টেকনোলজি</th>
                       <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
+                      <th className="px-3 py-2.5 font-semibold">ধরন / টেকনোলজি</th>
                       <th className="px-3 py-2.5 font-semibold">দক্ষতা</th>
-                      <th className="px-3 py-2.5 font-semibold">ওয়ারেন্টি</th>
-                      <th className="px-3 py-2.5 text-right font-semibold">প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 text-right font-semibold">সম্ভাব্য দাম প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 font-semibold">পাওয়া যায় যেসব ব্র্যান্ডে</th>
                       <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
                     </tr>
                   </thead>
                   <tbody>
                     {panelOptions.map((p) => (
-                      <tr key={p.brand} className="border-t even:bg-brand-red-soft/45">
-                        <td className="px-3 py-2.5 font-medium">{p.brand}</td>
+                      <tr key={p.capacity} className="border-t even:bg-brand-red-soft/45">
+                        <td className="whitespace-nowrap px-3 py-2.5 font-medium">{p.capacity}</td>
                         <td className="px-3 py-2.5 text-ink-soft">{p.type}</td>
-                        <td className="whitespace-nowrap px-3 py-2.5">{p.wp}</td>
                         <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{p.eff}</td>
-                        <td className="px-3 py-2.5 text-ink-soft">{p.warranty}</td>
                         <td className="whitespace-nowrap px-3 py-2.5 text-right tabular-nums">{p.price}</td>
+                        <td className="px-3 py-2.5">{p.brands}</td>
                         <td className="px-3 py-2.5 text-ink-soft">{p.note}</td>
                       </tr>
                     ))}
@@ -530,34 +412,28 @@ function QuotationPage() {
                 ইনভার্টারের সব বিকল্প
               </h2>
               <p className="mt-3 text-sm text-ink-soft">
-                ১৮০ kW সিস্টেমে ৩ × ৬০ kW ধরা হয়েছে। চাইলে কম সংখ্যক বড়
-                ইনভার্টার, বা ছাদ ভাগ করা থাকলে বেশি সংখ্যক ছোট ইনভার্টারও
-                ব্যবহার করা যায়।
+                ১৮০ kW সিস্টেমে ৩ × ৬০ kW ধরা হয়েছে। নির্দিষ্ট কোনো ব্র্যান্ড বা
+                মডেল চূড়ান্ত নয় — প্রতিটি ক্ষমতার ইনভার্টারের সম্ভাব্য দামের
+                সীমা এবং কোন কোন ব্র্যান্ড থেকে পাওয়া যায় তা নিচে দেওয়া হলো।
               </p>
               <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
                 <table className="w-full min-w-[680px] text-sm">
                   <thead>
                     <tr className="bg-brand-red text-left text-primary-foreground">
-                      <th className="px-3 py-2.5 font-semibold">ব্র্যান্ড / মডেল</th>
                       <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
-                      <th className="px-3 py-2.5 font-semibold">ফেজ</th>
-                      <th className="px-3 py-2.5 font-semibold">MPPT</th>
-                      <th className="px-3 py-2.5 font-semibold">দক্ষতা</th>
-                      <th className="px-3 py-2.5 font-semibold">ওয়ারেন্টি (বছর)</th>
-                      <th className="px-3 py-2.5 text-right font-semibold">প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 font-semibold">কনফিগারেশন / ব্যবহার</th>
+                      <th className="px-3 py-2.5 text-right font-semibold">সম্ভাব্য দাম প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 font-semibold">পাওয়া যায় যেসব ব্র্যান্ডে</th>
                       <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
                     </tr>
                   </thead>
                   <tbody>
                     {inverterOptions.map((v) => (
-                      <tr key={v.brand} className="border-t even:bg-brand-red-soft/45">
-                        <td className="px-3 py-2.5 font-medium">{v.brand}</td>
-                        <td className="whitespace-nowrap px-3 py-2.5">{v.cap}</td>
-                        <td className="px-3 py-2.5 text-ink-soft">{v.phase}</td>
-                        <td className="whitespace-nowrap px-3 py-2.5">{v.mppt}</td>
-                        <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{v.eff}</td>
-                        <td className="px-3 py-2.5 text-ink-soft">{v.warranty}</td>
+                      <tr key={v.cap} className="border-t even:bg-brand-red-soft/45">
+                        <td className="whitespace-nowrap px-3 py-2.5 font-medium">{v.cap}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{v.use}</td>
                         <td className="whitespace-nowrap px-3 py-2.5 text-right tabular-nums">{v.price}</td>
+                        <td className="px-3 py-2.5">{v.brands}</td>
                         <td className="px-3 py-2.5 text-ink-soft">{v.note}</td>
                       </tr>
                     ))}
