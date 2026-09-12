@@ -408,6 +408,96 @@ function QuotationPage() {
               </dl>
             </section>
 
+            {/* প্যানেল অপশন */}
+            <section aria-labelledby="panels" className="print-break">
+              <h2
+                id="panels"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <Layers className="h-5 w-5 text-brand-red" />
+                সোলার প্যানেলের ধরন ও বিকল্প
+              </h2>
+              <p className="mt-3 text-sm text-ink-soft">
+                নিচের যেকোনো প্যানেল দিয়েই সিস্টেমটি করা যাবে। ব্র্যান্ড বদলালে
+                শুধু প্যানেলের দাম ও মোট খরচ সেই অনুযায়ী পরিবর্তিত হবে।
+              </p>
+              <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
+                <table className="w-full min-w-[680px] text-sm">
+                  <thead>
+                    <tr className="bg-brand-red text-left text-primary-foreground">
+                      <th className="px-3 py-2.5 font-semibold">ব্র্যান্ড / মডেল</th>
+                      <th className="px-3 py-2.5 font-semibold">টেকনোলজি</th>
+                      <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
+                      <th className="px-3 py-2.5 font-semibold">দক্ষতা</th>
+                      <th className="px-3 py-2.5 font-semibold">ওয়ারেন্টি</th>
+                      <th className="px-3 py-2.5 text-right font-semibold">প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {panelOptions.map((p) => (
+                      <tr key={p.brand} className="border-t even:bg-brand-red-soft/45">
+                        <td className="px-3 py-2.5 font-medium">{p.brand}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{p.type}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5">{p.wp}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{p.eff}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{p.warranty}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5 text-right tabular-nums">{p.price}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{p.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            {/* ইনভার্টার অপশন */}
+            <section aria-labelledby="inverters" className="print-break">
+              <h2
+                id="inverters"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <Cpu className="h-5 w-5 text-brand-red" />
+                ইনভার্টারের সব বিকল্প
+              </h2>
+              <p className="mt-3 text-sm text-ink-soft">
+                ১৮০ kW সিস্টেমে ৩ × ৬০ kW ধরা হয়েছে। চাইলে কম সংখ্যক বড়
+                ইনভার্টার, বা ছাদ ভাগ করা থাকলে বেশি সংখ্যক ছোট ইনভার্টারও
+                ব্যবহার করা যায়।
+              </p>
+              <div className="opt-table-wrap mt-4 overflow-x-auto rounded-lg border border-brand-red/20">
+                <table className="w-full min-w-[680px] text-sm">
+                  <thead>
+                    <tr className="bg-brand-red text-left text-primary-foreground">
+                      <th className="px-3 py-2.5 font-semibold">ব্র্যান্ড / মডেল</th>
+                      <th className="px-3 py-2.5 font-semibold">ক্ষমতা</th>
+                      <th className="px-3 py-2.5 font-semibold">ফেজ</th>
+                      <th className="px-3 py-2.5 font-semibold">MPPT</th>
+                      <th className="px-3 py-2.5 font-semibold">দক্ষতা</th>
+                      <th className="px-3 py-2.5 font-semibold">ওয়ারেন্টি (বছর)</th>
+                      <th className="px-3 py-2.5 text-right font-semibold">প্রতি পিস (৳)</th>
+                      <th className="px-3 py-2.5 font-semibold">মন্তব্য</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {inverterOptions.map((v) => (
+                      <tr key={v.brand} className="border-t even:bg-brand-red-soft/45">
+                        <td className="px-3 py-2.5 font-medium">{v.brand}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5">{v.cap}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{v.phase}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5">{v.mppt}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5 tabular-nums">{v.eff}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{v.warranty}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5 text-right tabular-nums">{v.price}</td>
+                        <td className="px-3 py-2.5 text-ink-soft">{v.note}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+
             {/* BOQ টেবিল */}
             <section aria-labelledby="boq" className="print-boq">
               <h2
