@@ -268,11 +268,16 @@
     page-break-inside: avoid;
   }
 
-  .print-boq,
-  .print-break {
+  .print-boq {
     break-before: page;
     page-break-before: always;
   }
+
+  .print-break {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
 
   .boq-table-wrap,
   .opt-table-wrap {
