@@ -1,24 +1,405 @@
 import { createFileRoute } from "@tanstack/react-router";
+import {
+  Sun,
+  Zap,
+  Ruler,
+  Printer,
+  CheckCircle2,
+  FileText,
+  BatteryCharging,
+  TrendingUp,
+  AlertCircle,
+} from "lucide-react";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "১৮০ কিলোওয়াট অন-গ্রিড সোলার — সম্ভাব্য কোটেশন" },
+      {
+        name: "description",
+        content:
+          "১৬,০০০ বর্গফুট ছাদে ১৮০ kW অন-গ্রিড সোলার সিস্টেমের সম্পূর্ণ পণ্য তালিকা, পরিমাণ ও বাংলাদেশের বাজারভিত্তিক সম্ভাব্য মূল্যের কোটেশন।",
+      },
+      { property: "og:title", content: "১৮০ kW অন-গ্রিড সোলার কোটেশন" },
+      {
+        property: "og:description",
+        content:
+          "সম্পূর্ণ সেটআপের পণ্য তালিকা, পরিমাণ ও সম্ভাব্য মূল্য — বাংলাদেশের বাজারে উপলভ্য পণ্য ধরে।",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
+  component: QuotationPage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+/* ---------------- ডেটা ---------------- */
+
+const boqItems = [
+  {
+    sl: 1,
+    item: "সোলার প্যানেল — N-Type TOPCon Bifacial, 620 Wp (Longi / Jinko / Trina / Canadian Solar)",
+    qty: "২৯৬ পিস",
+    spec: "৬২০ Wp",
+    unit: 16500,
+    total: 4884000,
+  },
+  {
+    sl: 2,
+    item: "অন-গ্রিড থ্রি-ফেজ ইনভার্টার — 60 kW (Growatt / Solis / Huawei SUN2000)",
+    qty: "৩ পিস",
+    spec: "৬০ kW × ৩ = ১৮০ kW",
+    unit: 480000,
+    total: 1440000,
+  },
+  {
+    sl: 3,
+    item: "মাউন্টিং স্ট্রাকচার — হট-ডিপ গ্যালভানাইজড / অ্যালুমিনিয়াম রেইল",
+    qty: "১৮৩.৫ kWp",
+    spec: "প্রতি Wp হিসেবে",
+    unit: 4,
+    total: 734080,
+  },
+  {
+    sl: 4,
+    item: "সোলার DC ক্যাবল — ৬ মিমি² (১৫০০V, TUV সার্টিফাইড)",
+    qty: "৫,০০০ মিটার",
+    spec: "৬ mm²",
+    unit: 95,
+    total: 475000,
+  },
+  {
+    sl: 5,
+    item: "AC ক্যাবল — ৪-কোর ৫০ মিমি² (ইনভার্টার → মেইন প্যানেল)",
+    qty: "১৫০ মিটার",
+    spec: "৫০ mm² Cu",
+    unit: 1850,
+    total: 277500,
+  },
+  {
+    sl: 6,
+    item: "DC কম্বাইনার বক্স (DCDB) — SPD Type-II + ফিউজ + আইসোলেটর",
+    qty: "৬ সেট",
+    spec: "১৬ ইনপুট",
+    unit: 28000,
+    total: 168000,
+  },
+  {
+    sl: 7,
+    item: "AC ডিস্ট্রিবিউশন বক্স (ACDB) — ২৫০A MCCB, SPD, চেঞ্জওভার",
+    qty: "১ সেট",
+    spec: "২৫০ A",
+    unit: 350000,
+    total: 350000,
+  },
+  {
+    sl: 8,
+    item: "আর্থিং কিট — কেমিক্যাল ইলেক্ট্রোড + কপার তার",
+    qty: "৬ সেট",
+    spec: "প্যানেল/ইনভার্টার/লাইটনিং",
+    unit: 18000,
+    total: 108000,
+  },
+  {
+    sl: 9,
+    item: "লাইটনিং অ্যারেস্টার (ESE টাইপ) + ডাউন কন্ডাক্টর",
+    qty: "২ সেট",
+    spec: "ESE",
+    unit: 65000,
+    total: 130000,
+  },
+  {
+    sl: 10,
+    item: "ক্যাবল ট্রে, পাইপ, MC4 কানেক্টর, লাগস ও অন্যান্য ফিটিংস",
+    qty: "১ লট",
+    spec: "সম্পূর্ণ সাইট",
+    unit: 250000,
+    total: 250000,
+  },
+  {
+    sl: 11,
+    item: "নেট-মিটারিং সেটআপ — মিটার বক্স, CT ও আবেদন সংক্রান্ত খরচ",
+    qty: "১ সেট",
+    spec: "বিদ্যুৎ সংস্থা অনুযায়ী",
+    unit: 150000,
+    total: 150000,
+  },
+  {
+    sl: 12,
+    item: "ইনস্টলেশন, কমিশনিং ও টেস্টিং (শ্রমিক)",
+    qty: "১ চুক্তি",
+    spec: "টার্নকি",
+    unit: 650000,
+    total: 650000,
+  },
+  {
+    sl: 13,
+    item: "ডিজাইন, ডকুমেন্টেশন ও ইউটিলিটি লিয়েজন",
+    qty: "১ চুক্তি",
+    spec: "—",
+    unit: 120000,
+    total: 120000,
+  },
+];
+
+const subtotal = boqItems.reduce((s, i) => s + i.total, 0);
+const contingency = Math.round(subtotal * 0.05);
+const grandTotal = subtotal + contingency;
+
+const fmt = (n: number) => n.toLocaleString("en-IN");
+const lakh = (n: number) => (n / 100000).toFixed(2);
+
+/* ---------------- পেজ ---------------- */
+
+function QuotationPage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen py-6 sm:py-10 print:py-0">
+      <div className="mx-auto max-w-4xl px-3 sm:px-6">
+        {/* প্রিন্ট বাটন */}
+        <div className="no-print mb-4 flex justify-end">
+          <button
+            onClick={() => window.print()}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            <Printer className="h-4 w-4" />
+            প্রিন্ট / PDF সেভ করুন
+          </button>
+        </div>
+
+        <div className="print-page overflow-hidden rounded-2xl border bg-card shadow-xl">
+          {/* হেডার */}
+          <header className="border-b bg-primary px-6 py-8 text-primary-foreground sm:px-10">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="flex items-center gap-2 text-sm font-medium text-solar-gold">
+                  <Sun className="h-4 w-4" /> সম্ভাব্য মূল্য প্রাক্কলন / কোটেশন
+                </p>
+                <h1 className="font-display mt-2 text-3xl font-bold leading-tight sm:text-4xl">
+                  ১৮০ কিলোওয়াট অন-গ্রিড
+                  <br />
+                  সোলার পাওয়ার সিস্টেম
+                </h1>
+                <p className="mt-3 max-w-xl text-sm text-primary-foreground/80">
+                  ছাদের আয়তন: ১৬,০০০ বর্গফুট • নেট-মিটারিং ভিত্তিক থ্রি-ফেজ
+                  অন-গ্রিড সিস্টেম • বাংলাদেশের বাজারে উপলভ্য পণ্য
+                </p>
+              </div>
+              <div className="hidden shrink-0 rounded-xl border border-primary-foreground/20 p-4 text-center sm:block">
+                <p className="text-xs text-primary-foreground/70">তারিখ</p>
+                <p className="font-semibold">সেপ্টেম্বর ২০২৬</p>
+              </div>
+            </div>
+          </header>
+
+          <main className="space-y-8 px-6 py-8 sm:px-10">
+            {/* ছাদ সম্ভাব্যতা */}
+            <section aria-labelledby="feasibility">
+              <h2
+                id="feasibility"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <Ruler className="h-5 w-5 text-solar-gold" />
+                আপনার ছাদে কি ১৮০ kW সম্ভব?
+              </h2>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-xl border bg-solar-gold-soft p-4">
+                  <p className="text-sm text-ink-soft">ছাদের মোট জায়গা</p>
+                  <p className="mt-1 text-2xl font-bold">১৬,০০০ বর্গফুট</p>
+                </div>
+                <div className="rounded-xl border bg-solar-gold-soft p-4">
+                  <p className="text-sm text-ink-soft">
+                    ১৮০ kW-এর জন্য প্রয়োজন (সারি-ফাঁকাসহ)
+                  </p>
+                  <p className="mt-1 text-2xl font-bold">≈ ৯,০০০ বর্গফুট</p>
+                </div>
+                <div className="rounded-xl border bg-leaf/10 p-4">
+                  <p className="flex items-center gap-1.5 text-sm font-semibold text-leaf">
+                    <CheckCircle2 className="h-4 w-4" /> হ্যাঁ, আরামে করা যাবে
+                  </p>
+                  <p className="mt-1 text-sm text-ink-soft">
+                    ছাদের মাত্র ~৫৬% লাগবে; বাকি জায়গা হাঁটার পথ ও
+                    মেইনটেন্যান্সের জন্য খালি থাকবে।
+                  </p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-ink-soft">
+                হিসাব: ৬২০ Wp-এর একটি প্যানেলের আকার প্রায় ২৭ বর্গফুট। ২৯৬টি
+                প্যানেল + সারির মাঝে হাঁটার ফাঁকা ধরে মোট ~৯,০০০ বর্গফুট ধরা
+                হয়েছে। ছাদ যদি ছায়ামুক্ত (পানির ট্যাংক, পাশের বিল্ডিং, গাছ
+                ইত্যাদি নেই) হয়, তাহলে কোনো সমস্যা নেই।
+              </p>
+            </section>
+
+            {/* সিস্টেম সামারি */}
+            <section aria-labelledby="summary">
+              <h2
+                id="summary"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <Zap className="h-5 w-5 text-solar-gold" />
+                সিস্টেমের এক নজরে
+              </h2>
+              <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {[
+                  ["মোট ক্ষমতা", "১৮৩.৫ kWp"],
+                  ["প্যানেল", "২৯৬ পিস × ৬২০ Wp"],
+                  ["ইনভার্টার", "৩ পিস × ৬০ kW"],
+                  ["ধরন", "অন-গ্রিড (নেট-মিটারিং)"],
+                ].map(([k, v]) => (
+                  <div key={k} className="rounded-xl border p-4">
+                    <dt className="text-xs text-muted-foreground">{k}</dt>
+                    <dd className="mt-1 font-bold">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+            {/* BOQ টেবিল */}
+            <section aria-labelledby="boq">
+              <h2
+                id="boq"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <FileText className="h-5 w-5 text-solar-gold" />
+                পণ্যের তালিকা ও সম্ভাব্য মূল্য (BOQ)
+              </h2>
+              <div className="mt-4 overflow-x-auto rounded-xl border">
+                <table className="w-full min-w-[640px] text-sm">
+                  <thead>
+                    <tr className="bg-secondary text-left">
+                      <th className="px-3 py-2.5 font-semibold">#</th>
+                      <th className="px-3 py-2.5 font-semibold">
+                        পণ্য / বিবরণ
+                      </th>
+                      <th className="px-3 py-2.5 font-semibold">পরিমাণ</th>
+                      <th className="px-3 py-2.5 font-semibold">ক্ষমতা/স্পেসিফিকেশন</th>
+                      <th className="px-3 py-2.5 text-right font-semibold">
+                        একক মূল্য (৳)
+                      </th>
+                      <th className="px-3 py-2.5 text-right font-semibold">
+                        মোট (৳)
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {boqItems.map((i) => (
+                      <tr key={i.sl} className="border-t">
+                        <td className="px-3 py-2.5 text-muted-foreground">
+                          {i.sl}
+                        </td>
+                        <td className="px-3 py-2.5">{i.item}</td>
+                        <td className="whitespace-nowrap px-3 py-2.5">
+                          {i.qty}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-2.5 text-muted-foreground">
+                          {i.spec}
+                        </td>
+                        <td className="px-3 py-2.5 text-right tabular-nums">
+                          {fmt(i.unit)}
+                        </td>
+                        <td className="px-3 py-2.5 text-right font-medium tabular-nums">
+                          {fmt(i.total)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* মোট খরচ */}
+              <div className="mt-4 rounded-xl border-2 border-solar-gold bg-solar-gold-soft p-5">
+                <div className="space-y-1.5 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-ink-soft">সাব-টোটাল</span>
+                    <span className="font-medium tabular-nums">
+                      ৳ {fmt(subtotal)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-ink-soft">
+                      জরুরি খরচ / কন্টিনজেন্সি (৫%)
+                    </span>
+                    <span className="font-medium tabular-nums">
+                      ৳ {fmt(contingency)}
+                    </span>
+                  </div>
+                  <div className="flex items-baseline justify-between border-t pt-2">
+                    <span className="font-display text-lg font-bold">
+                      সর্বমোট (আনুমানিক)
+                    </span>
+                    <span className="font-display text-2xl font-bold text-leaf tabular-nums">
+                      ৳ {fmt(grandTotal)}
+                    </span>
+                  </div>
+                  <p className="text-right text-sm text-ink-soft">
+                    অর্থাৎ প্রায় {lakh(grandTotal)} লাখ টাকা (~৳ ৫৬ প্রতি
+                    ওয়াট)
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* উৎপাদন ও সাশ্রয় */}
+            <section aria-labelledby="roi">
+              <h2
+                id="roi"
+                className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
+              >
+                <TrendingUp className="h-5 w-5 text-solar-gold" />
+                কত বিদ্যুৎ পাবেন, কত টাকা সাশ্রয়?
+              </h2>
+              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {[
+                  { icon: BatteryCharging, k: "মাসিক উৎপাদন", v: "≈ ২৩,০০০ ইউনিট" },
+                  { icon: Zap, k: "বছরে উৎপাদন", v: "≈ ২.৭৬ লাখ ইউনিট" },
+                  { icon: TrendingUp, k: "বছরে সাশ্রয়", v: "≈ ৩০ লাখ ৳ (৳১১/ইউনিট ধরে)" },
+                  { icon: CheckCircle2, k: "টাকা উঠতে সময়", v: "≈ ৩.৫ বছর" },
+                ].map(({ icon: Icon, k, v }) => (
+                  <div key={k} className="rounded-xl border p-4">
+                    <Icon className="h-5 w-5 text-solar-gold" />
+                    <p className="mt-2 text-xs text-muted-foreground">{k}</p>
+                    <p className="mt-0.5 font-bold">{v}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* শর্তাবলী */}
+            <section aria-labelledby="terms" className="rounded-xl bg-secondary/60 p-5 text-sm">
+              <h2
+                id="terms"
+                className="font-display flex items-center gap-2 text-base font-bold"
+              >
+                <AlertCircle className="h-4 w-4 text-solar-gold" />
+                জেনে রাখুন
+              </h2>
+              <ul className="mt-3 list-disc space-y-1.5 pl-5 text-ink-soft">
+                <li>
+                  এটি বাজারভিত্তিক <strong>আনুমানিক প্রাক্কলন</strong> — চূড়ান্ত
+                  দাম ব্র্যান্ড, সাইট ভিজিট ও চলতি ডলার রেটের ওপর নির্ভর করবে
+                  (±১০% হতে পারে)।
+                </li>
+                <li>
+                  নেট-মিটারিং অনুমোদনের জন্য সংশ্লিষ্ট বিদ্যুৎ সংস্থায়
+                  (DPDC/DESCO/PDB/REB) আবেদন করতে হবে — তাদের ট্রান্সফরমার
+                  ক্ষমতার সর্বোচ্চ ৭০% পর্যন্ত সোলার অনুমোদন হয়।
+                </li>
+                <li>
+                  সাধারণ ওয়ারেন্টি: প্যানেল ১২ বছর (প্রোডাক্ট) + ৩০ বছর
+                  (পারফরম্যান্স), ইনভার্টার ৫–১০ বছর।
+                </li>
+                <li>ব্যাটারি লাগবে না — অন-গ্রিড সিস্টেমে গ্রিডই ব্যাকআপ।</li>
+                <li>VAT/TAX ও বিদ্যুৎ সংস্থার সিকিউরিটি ডিপোজিট এই হিসাবের বাইরে।</li>
+              </ul>
+            </section>
+          </main>
+
+          <footer className="border-t bg-secondary/40 px-6 py-4 text-center text-xs text-muted-foreground sm:px-10">
+            এই কোটেশনটি ১৮০ kW অন-গ্রিড সোলার প্রকল্পের পরিকল্পনার উদ্দেশ্যে
+            তৈরি — চূড়ান্ত প্রস্তাবের জন্য সাইট পরিদর্শন প্রয়োজন।
+          </footer>
+        </div>
+      </div>
     </div>
   );
 }
