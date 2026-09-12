@@ -146,5 +146,35 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@theme inline {
+  --color-solar-gold: var(--solar-gold);
+  --color-solar-gold-soft: var(--solar-gold-soft);
+  --color-leaf: var(--leaf);
+  --color-ink-soft: var(--ink-soft);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-page {
+    box-shadow: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  section,
+  table {
+    break-inside: avoid;
   }
 }
