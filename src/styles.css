@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -143,19 +129,14 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
+  * { border-color: var(--color-border); }
+  html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }
-
-  .font-display {
-    font-family: var(--font-display);
-  }
+  .font-display { font-family: var(--font-display); }
 }
 
 @theme inline {
@@ -165,11 +146,42 @@
   --color-ink-soft: var(--ink-soft);
 }
 
-.print-page h2 {
-  position: relative;
-  padding-bottom: 0.45rem;
+/* Mobile-safe roof layout */
+.rl-drawing { width: 100%; max-width: 100%; }
+.rl-drawing .rl-svg,
+.rl-drawing svg {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
 }
 
+@media (max-width: 639px) {
+  .rl-drawing { padding: 2px !important; overflow: hidden !important; }
+  .rl-controls {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .rl-controls > button {
+    width: 100%;
+    min-height: 44px;
+  }
+  .rl-stage-chips {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rl-stage-chips::-webkit-scrollbar { display: none; }
+  .rl-stage-chips > button { flex: 0 0 auto; min-height: 36px; }
+}
+
+.print-page h2 { position: relative; padding-bottom: 0.45rem; }
 .print-page h2::after {
   position: absolute;
   bottom: 0;
@@ -182,162 +194,37 @@
 }
 
 @media print {
-  @page {
-    size: A4 portrait;
-    margin: 10mm;
-  }
-
-  html,
-  body {
-    width: 210mm;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .no-print {
-    display: none !important;
-  }
-
-  body {
-    background: white;
-    font-size: 9.5pt;
-  }
-
-  body::before {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1.4mm;
-    background: var(--brand-red);
-    content: "";
-  }
-
-  body > div,
-  body > div > div {
-    min-height: 0 !important;
-  }
-
-  .print-page,
-  .print-page > main,
-  .print-page > header,
-  .print-page > footer {
-    width: auto !important;
-    max-width: none !important;
-  }
-
-  .print-page {
-    box-shadow: none !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-    border: 0 !important;
-    overflow: visible !important;
-  }
-
-  .quotation-header {
-    padding: 5mm 6mm !important;
-    break-inside: avoid-page;
-  }
-
-  .brand-logo {
-    width: 55mm !important;
-  }
-
-  .print-page main {
-    padding: 6mm !important;
-  }
-
-  .print-page main > section {
-    margin-bottom: 6mm;
-  }
-
-  .print-page main > section + section {
-    margin-top: 6mm !important;
-  }
-
-  .print-keep,
-  .print-page h2,
-  .print-page dl,
-  .print-page ul {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-  .print-boq,
-  .print-new-page {
-    break-before: page;
-    page-break-before: always;
-  }
-
-
-  .print-break {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-
-  .boq-table-wrap,
-  .opt-table-wrap {
-    overflow: visible !important;
-    border: 0 !important;
-  }
-
-  table {
-    min-width: 0 !important;
-    table-layout: fixed;
-    border-collapse: collapse;
-  }
-
-  thead {
-    display: table-header-group;
-  }
-
-  tbody {
-    display: table-row-group;
-  }
-
-  tr,
-  th,
-  td {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-  th,
-  td {
-    padding: 1.6mm 1.8mm !important;
-    border: 0.2mm solid var(--border);
-    overflow-wrap: anywhere;
-  }
-
+  @page { size: A4 portrait; margin: 10mm; }
+  html, body { width: 210mm; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .no-print { display: none !important; }
+  body { background: white; font-size: 9.5pt; }
+  body::before { position: fixed; top: 0; left: 0; right: 0; height: 1.4mm; background: var(--brand-red); content: ""; }
+  body > div, body > div > div { min-height: 0 !important; }
+  .print-page, .print-page > main, .print-page > header, .print-page > footer { width: auto !important; max-width: none !important; }
+  .print-page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; border: 0 !important; overflow: visible !important; }
+  .quotation-header { padding: 5mm 6mm !important; break-inside: avoid-page; }
+  .brand-logo { width: 55mm !important; }
+  .print-page main { padding: 6mm !important; }
+  .print-page main > section { margin-bottom: 6mm; }
+  .print-page main > section + section { margin-top: 6mm !important; }
+  .print-keep, .print-page h2, .print-page dl, .print-page ul { break-inside: avoid-page; page-break-inside: avoid; }
+  .print-boq, .print-new-page { break-before: page; page-break-before: always; }
+  .print-break { break-inside: avoid-page; page-break-inside: avoid; }
+  .boq-table-wrap, .opt-table-wrap { overflow: visible !important; border: 0 !important; }
+  table { min-width: 0 !important; table-layout: fixed; border-collapse: collapse; }
+  thead { display: table-header-group; }
+  tbody { display: table-row-group; }
+  tr, th, td { break-inside: avoid-page; page-break-inside: avoid; }
+  th, td { padding: 1.6mm 1.8mm !important; border: 0.2mm solid var(--border); overflow-wrap: anywhere; }
   .boq-table-wrap th:nth-child(1) { width: 5%; }
   .boq-table-wrap th:nth-child(2) { width: 35%; }
   .boq-table-wrap th:nth-child(3) { width: 12%; }
   .boq-table-wrap th:nth-child(4) { width: 20%; }
   .boq-table-wrap th:nth-child(5) { width: 13%; }
   .boq-table-wrap th:nth-child(6) { width: 15%; }
-
-  .opt-table-wrap table {
-    font-size: 8.5pt;
-  }
-
-
-  td {
-    white-space: normal !important;
-  }
-
-  footer {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+  .opt-table-wrap table { font-size: 8.5pt; }
+  td { white-space: normal !important; }
+  footer { break-inside: avoid-page; page-break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
 }
