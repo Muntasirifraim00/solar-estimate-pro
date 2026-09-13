@@ -377,7 +377,7 @@ function QuotationPage() {
             </section>
 
             {/* প্যানেল অপশন */}
-            <section aria-labelledby="panels" className="print-break">
+            <section aria-labelledby="panels" className="print-break print-options-page">
               <h2
                 id="panels"
                 className="font-display flex items-center gap-2 text-xl font-bold text-foreground"
