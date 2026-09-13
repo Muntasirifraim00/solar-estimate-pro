@@ -287,6 +287,9 @@
   .boq-table-wrap th:nth-child(4) { width: 20%; }
   .boq-table-wrap th:nth-child(5) { width: 13%; }
   .boq-table-wrap th:nth-child(6) { width: 15%; }
+  .boq-table-wrap table { font-size: 8.8pt; line-height: 1.25; }
+  .boq-table-wrap th,
+  .boq-table-wrap td { padding: 1mm 1.5mm !important; }
   .opt-table-wrap table { font-size: 8.5pt; }
   .quality-guide { font-size: 8.5pt; }
   .quality-guide p { orphans: 3; widows: 3; }
