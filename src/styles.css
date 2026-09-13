@@ -210,7 +210,7 @@
   .print-running-header {
     position: fixed;
     z-index: 50;
-    bottom: -10mm;
+    bottom: -14mm;
     left: 0;
     right: 0;
     display: flex;
@@ -270,9 +270,9 @@
   .print-page main > section + section { margin-top: 6mm !important; }
   .print-keep, .print-page h2, .print-page dl, .print-page ul { break-inside: avoid-page; page-break-inside: avoid; }
   .print-boq, .print-new-page { break-before: page; page-break-before: always; }
-  .print-boq, .print-options-page { padding-top: 5mm; }
+  .print-boq, .print-options-page { padding-top: 10mm; }
   .print-options-page { break-before: page; page-break-before: always; }
-  .print-total-page { break-before: page; page-break-before: always; margin-top: 5mm !important; }
+  .print-total-page { break-before: page; page-break-before: always; padding-top: 10mm; margin-top: 5mm !important; }
   .print-break { break-inside: avoid-page; page-break-inside: avoid; }
   .boq-table-wrap, .opt-table-wrap { overflow: visible !important; border: 0 !important; }
   table { min-width: 0 !important; table-layout: fixed; border-collapse: collapse; }
@@ -290,21 +290,6 @@
   .quality-guide { font-size: 8.5pt; }
   .quality-guide p { orphans: 3; widows: 3; }
   td { white-space: normal !important; }
-  .print-page > footer {
-    display: flex !important;
-    min-height: 10mm;
-    align-items: center;
-    justify-content: center;
-    gap: 5mm;
-    margin-top: 7mm;
-    padding: 2mm 5mm !important;
-    border-top: 0.8mm solid var(--brand-red) !important;
-    background: var(--brand-red) !important;
-    color: var(--primary-foreground) !important;
-    font-size: 7pt;
-    white-space: nowrap;
-  }
-  .print-page > footer p { margin: 0 !important; color: inherit !important; }
-  .print-page > footer p:last-child { display: none; }
+  .print-page > footer { display: none !important; }
   a { color: inherit; text-decoration: none; }
 }
