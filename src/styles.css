@@ -199,7 +199,7 @@
 }
 
 @media print {
-  @page { size: A4 portrait; margin: 20mm 10mm 16mm; }
+  @page { size: A4 portrait; margin: 22mm 10mm 17mm; }
   html, body { width: auto; margin: 0 !important; padding: 0 !important; overflow: visible !important; }
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
   .no-print { display: none !important; }
@@ -210,7 +210,7 @@
   .print-running-header {
     position: fixed;
     z-index: 50;
-    top: -17mm;
+    bottom: -14mm;
     left: 0;
     right: 0;
     display: flex;
@@ -249,7 +249,7 @@
   .print-running-footer {
     position: fixed;
     z-index: 50;
-    bottom: -13mm;
+    top: -18mm;
     left: 0;
     right: 0;
     display: flex;
@@ -270,6 +270,7 @@
   .print-page main > section + section { margin-top: 6mm !important; }
   .print-keep, .print-page h2, .print-page dl, .print-page ul { break-inside: avoid-page; page-break-inside: avoid; }
   .print-boq, .print-new-page { break-before: page; page-break-before: always; }
+  .print-total-page { break-before: page; page-break-before: always; }
   .print-break { break-inside: avoid-page; page-break-inside: avoid; }
   .boq-table-wrap, .opt-table-wrap { overflow: visible !important; border: 0 !important; }
   table { min-width: 0 !important; table-layout: fixed; border-collapse: collapse; }

@@ -513,7 +513,7 @@ function QuotationPage() {
               </div>
 
               {/* মোট খরচ */}
-              <div className="print-keep mt-4 rounded-lg border-2 border-brand-red bg-brand-red-soft p-5">
+              <div className="print-total-page print-keep mt-4 rounded-lg border-2 border-brand-red bg-brand-red-soft p-5">
                 <div className="space-y-1.5 text-sm">
                   <div className="flex justify-between">
                     <span className="text-ink-soft">সাব-টোটাল</span>
@@ -665,7 +665,7 @@ function QuotationPage() {
 
 
             {/* শর্তাবলী */}
-            <section aria-labelledby="terms" className="print-keep print-new-page rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
+            <section aria-labelledby="terms" className="print-keep rounded-lg border-l-4 border-brand-red bg-brand-red-soft p-5 text-sm">
               <h2
                 id="terms"
                 className="font-display flex items-center gap-2 text-base font-bold"
