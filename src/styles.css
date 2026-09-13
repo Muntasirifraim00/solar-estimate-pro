@@ -290,6 +290,21 @@
   .quality-guide { font-size: 8.5pt; }
   .quality-guide p { orphans: 3; widows: 3; }
   td { white-space: normal !important; }
-  .print-page > footer { display: none !important; }
+  .print-page > footer {
+    display: flex !important;
+    height: 10mm;
+    align-items: center;
+    justify-content: center;
+    gap: 5mm;
+    margin-top: 7mm;
+    padding: 1.5mm 5mm !important;
+    border-top: 0.8mm solid var(--brand-red) !important;
+    background: var(--brand-red) !important;
+    color: var(--primary-foreground) !important;
+    font-size: 7pt;
+    white-space: nowrap;
+  }
+  .print-page > footer p { margin: 0 !important; color: inherit !important; }
+  .print-page > footer p:last-child { display: none; }
   a { color: inherit; text-decoration: none; }
 }
