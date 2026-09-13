@@ -267,22 +267,22 @@ function QuotationPage() {
           </button>
         </div>
 
-        <article className="print-page overflow-hidden rounded-xl border border-brand-red/20 bg-card shadow-xl">
-          <div className="print-running-header" aria-hidden="true">
-            <div className="print-running-logo">
-              <img src={sunclickLogoAsset.url} alt="" />
-            </div>
-            <div className="print-running-title">
-              <strong>SUNCLICK GLOBAL LIMITED</strong>
-              <span>১৮০ kW অন-গ্রিড সোলার কোটেশন</span>
-            </div>
+        <div className="print-running-header" aria-hidden="true">
+          <div className="print-running-logo">
+            <img src={sunclickLogoAsset.url} alt="" />
           </div>
-          <div className="print-running-footer" aria-hidden="true">
+          <div className="print-running-title">
             <strong>SUNCLICK GLOBAL LIMITED</strong>
-            <span>www.sunclickgloballimited.com</span>
-            <span>sunclickgloballtd@gmail.com</span>
+            <span>১৮০ kW অন-গ্রিড সোলার কোটেশন</span>
           </div>
+        </div>
+        <div className="print-running-footer" aria-hidden="true">
+          <strong>SUNCLICK GLOBAL LIMITED</strong>
+          <span>www.sunclickgloballimited.com</span>
+          <span>sunclickgloballtd@gmail.com</span>
+        </div>
 
+        <article className="print-page overflow-hidden rounded-xl border border-brand-red/20 bg-card shadow-xl">
           {/* হেডার */}
           <header className="quotation-header relative border-b border-brand-red/20 bg-brand-red-soft px-6 py-6 sm:px-10">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-brand-red" />
