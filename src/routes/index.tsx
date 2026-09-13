@@ -13,7 +13,9 @@ import {
   Cpu,
   Wallet,
   ClipboardList,
-
+  ShieldCheck,
+  Gem,
+  Gauge,
 } from "lucide-react";
 import sunclickLogoAsset from "@/assets/sunclick-logo.png.asset.json";
 
@@ -55,8 +57,8 @@ const boqItems = [
     item: "অন-গ্রিড থ্রি-ফেজ সোলার ইনভার্টার — 60 kW",
     qty: "৩ পিস",
     spec: "৬০ kW × ৩ = ১৮০ kW",
-    unit: 480000,
-    total: 1440000,
+    unit: 550000,
+    total: 1650000,
   },
   {
     sl: 3,
@@ -266,6 +268,21 @@ function QuotationPage() {
         </div>
 
         <article className="print-page overflow-hidden rounded-xl border border-brand-red/20 bg-card shadow-xl">
+          <div className="print-running-header" aria-hidden="true">
+            <div className="print-running-logo">
+              <img src={sunclickLogoAsset.url} alt="" />
+            </div>
+            <div className="print-running-title">
+              <strong>SUNCLICK GLOBAL LIMITED</strong>
+              <span>১৮০ kW অন-গ্রিড সোলার কোটেশন</span>
+            </div>
+          </div>
+          <div className="print-running-footer" aria-hidden="true">
+            <strong>SUNCLICK GLOBAL LIMITED</strong>
+            <span>www.sunclickgloballimited.com</span>
+            <span>sunclickgloballtd@gmail.com</span>
+          </div>
+
           {/* হেডার */}
           <header className="quotation-header relative border-b border-brand-red/20 bg-brand-red-soft px-6 py-6 sm:px-10">
             <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1.5 bg-brand-red" />
@@ -526,6 +543,43 @@ function QuotationPage() {
                   </p>
                 </div>
               </div>
+
+              <div className="quality-guide print-keep mt-4 overflow-hidden rounded-lg border border-brand-red/25 bg-card">
+                <div className="border-b border-brand-red/20 bg-brand-red px-5 py-3 text-primary-foreground">
+                  <p className="font-display text-lg font-bold">বাজেট অনুযায়ী পণ্যের মান নির্বাচন</p>
+                  <p className="mt-0.5 text-xs opacity-90">একই ক্ষমতার সিস্টেমে ব্র্যান্ড, প্রযুক্তি, ওয়ারেন্টি ও সাপোর্ট অনুযায়ী মূল্য পরিবর্তিত হয়</p>
+                </div>
+                <div className="grid gap-px bg-border sm:grid-cols-3">
+                  <div className="bg-card p-4">
+                    <div className="flex items-center gap-2 text-ink-soft">
+                      <Gauge className="h-5 w-5" />
+                      <span className="text-xs font-bold">সাশ্রয়ী সমাধান</span>
+                    </div>
+                    <p className="mt-2 text-2xl font-bold text-foreground">৳ ৪০ <span className="text-sm font-medium text-ink-soft">/ ওয়াট</span></p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">কম বাজেটের ব্র্যান্ড ও মৌলিক যন্ত্রাংশ। প্রাথমিক খরচ কমবে, তবে পণ্যের মান, দক্ষতা, ওয়ারেন্টি ও দীর্ঘমেয়াদি সাপোর্ট তুলনামূলক কম হতে পারে।</p>
+                  </div>
+                  <div className="relative bg-brand-red-soft p-4">
+                    <span className="absolute right-3 top-3 rounded-full bg-brand-red px-2 py-1 text-[10px] font-bold text-primary-foreground">প্রস্তাবিত</span>
+                    <div className="flex items-center gap-2 text-brand-red">
+                      <ShieldCheck className="h-5 w-5" />
+                      <span className="text-xs font-bold">মানসম্মত সমাধান</span>
+                    </div>
+                    <p className="mt-2 text-2xl font-bold text-brand-red">৳ ৫৬ <span className="text-sm font-medium">/ ওয়াট</span></p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">ভালো মানের প্রতিষ্ঠিত ব্র্যান্ড, নির্ভরযোগ্য উৎপাদন, উন্নত সুরক্ষা ও শক্তিশালী ওয়ারেন্টির ভারসাম্য। এই কোটেশনের সুপারিশকৃত মান।</p>
+                  </div>
+                  <div className="bg-card p-4">
+                    <div className="flex items-center gap-2 text-brand-red">
+                      <Gem className="h-5 w-5" />
+                      <span className="text-xs font-bold">প্রিমিয়াম সমাধান</span>
+                    </div>
+                    <p className="mt-2 text-2xl font-bold text-foreground">৳ ৬৫ <span className="text-sm font-medium text-ink-soft">/ ওয়াট পর্যন্ত</span></p>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">আরও উন্নত প্রযুক্তি, উচ্চ দক্ষতা, প্রিমিয়াম ব্র্যান্ড, দীর্ঘ ওয়ারেন্টি ও উন্নত বিক্রয়োত্তর সাপোর্টের জন্য উপযোগী।</p>
+                  </div>
+                </div>
+                <p className="border-t border-brand-red/15 px-5 py-3 text-xs leading-relaxed text-ink-soft">
+                  <strong className="text-foreground">পরামর্শ:</strong> শুধু প্রতি-ওয়াট মূল্য নয়—প্যানেলের দক্ষতা ও অবক্ষয় হার, ইনভার্টারের সুরক্ষা, সার্টিফিকেশন, ওয়ারেন্টি এবং স্থানীয় সেবা একসঙ্গে বিবেচনা করে সিদ্ধান্ত নিন। চূড়ান্ত মূল্য নির্বাচিত ব্র্যান্ড ও সাইটের বাস্তব অবস্থার ওপর নির্ভর করবে।
+                </p>
+              </div>
             </section>
 
             {/* উৎপাদন ও সাশ্রয় */}
@@ -643,6 +697,7 @@ function QuotationPage() {
           <footer className="print-keep border-t border-brand-red/20 bg-brand-red-soft px-6 py-5 text-center text-xs text-ink-soft sm:px-10">
             <p className="font-bold text-brand-red">SUNCLICK GLOBAL LIMITED</p>
             <p className="mt-1">www.sunclickgloballimited.com</p>
+            <p className="mt-1">sunclickgloballtd@gmail.com</p>
             <p className="mt-2">
               এই কোটেশনটি ১৮০ kW অন-গ্রিড সোলার প্রকল্পের পরিকল্পনার উদ্দেশ্যে
               তৈরি — চূড়ান্ত প্রস্তাবের জন্য সাইট পরিদর্শন প্রয়োজন।
